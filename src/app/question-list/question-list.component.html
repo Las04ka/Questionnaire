@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <div class="unanswered list">
+    <div *ngFor="let question of questions$ | async; index as i">
+      <app-open-question
+        *ngIf="question.type === 'open' && !question.answer"
+        [question]="question"
+        [id]="i">
+      </app-open-question>
+      <app-single-question
+        *ngIf="question.type === 'radio' && !question.answer"
+        [question]="question"
+        [id]="i">
+      </app-single-question>
+      <app-multi-question
+        *ngIf="question.type === 'multi' && !question.answer"
+        [question]="question"
+        [id]="i">
+      </app-multi-question>
+    </div>
+  </div>
+  <div class="answered list">
+    <div *ngFor="let question of questions$ | async; index as i">
+      <mat-card
+        class="answered-question"
+        *ngIf="question.answer">
+        <mat-card-header
+          ><mat-card-title>{{ question.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>{{ question.answer }}</mat-card-content>
+        <mat-card-actions align="end">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="onRevert(i)">
+            REVERT
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

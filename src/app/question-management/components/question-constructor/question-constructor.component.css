@@ -1,0 +1,26 @@
+mat-card {
+  display: flex;
+  align-items: center;
+}
+
+.types {
+  display: flex;
+  flex-direction: column;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.add {
+  margin: 0 auto 3vh;
+}
+
+.remove {
+  margin-left: 1vw;
+}
+
+.submit {
+  right: auto;
+}
