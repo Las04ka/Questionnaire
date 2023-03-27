@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.add-question-btn {
+  width: 30%;
+  margin: 0 auto;
+}

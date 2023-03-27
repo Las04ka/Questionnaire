@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5vh;
+  padding: 2% 15%;
+  background: rgb(46, 252, 8);
+  background: linear-gradient(
+    90deg,
+    rgba(46, 252, 8, 97.2%) 0%,
+    rgba(7, 232, 71, 100%) 0%,
+    rgba(0, 249, 255, 100%) 87%
+  );
+}
+
+.title {
+  text-align: center;
+}
+
+.btn-container {
+  width: 50px;
+}

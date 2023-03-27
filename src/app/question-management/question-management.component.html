@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <button
+    class="add-question-btn"
+    mat-raised-button
+    color="primary"
+    routerLink="add">
+    + add question
+  </button>
+  <mat-card *ngFor="let question of questions$ | async; index as i">
+    <mat-card-header>
+      <mat-card-title>{{ question.title }}</mat-card-title>
+      <mat-card-subtitle>
+        Type: {{ question.type }}<br />
+        Created: {{ question.created | date }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button
+        mat-button
+        routerLink="edit/{{ question.created }}">
+        Edit
+      </button>
+      <button
+        mat-button
+        (click)="onDelete(question.created)">
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

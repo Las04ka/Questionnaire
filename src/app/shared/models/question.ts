@@ -1,0 +1,7 @@
+export interface IQuestion {
+  title: string;
+  type: string;
+  options: string[];
+  answer: string | null;
+  created: number;
+}

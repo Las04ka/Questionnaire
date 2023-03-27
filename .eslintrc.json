@@ -1,4 +1,3 @@
-
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
@@ -38,7 +37,7 @@
           {
             "ignoreCase": false,
             "ignoreDeclarationSort": true,
-            "ignoreMemberSort": true,
+            "ignoreMemberSort": false,
             "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
             "allowSeparatedGroups": false
           }
@@ -72,14 +71,6 @@
             "parser": "angular"
           }
         ]
-      }
-    },
-    {
-      "files": ["*.ts"],
-      "extends": ["plugin:@ngrx/strict-requiring-type-checking"],
-      "rules": {
-        "@ngrx/on-function-explicit-return-type": "off",
-        "@ngrx/no-typed-global-store": "off"
       }
     }
   ]

@@ -1,0 +1,22 @@
+<header>
+  <div class="back-btn-container btn-container">
+    <button
+      *ngIf="title !== 'Question Management'"
+      mat-mini-fab
+      color="primary"
+      type="button"
+      routerLink="management">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+  <h2 class="title">{{ title }}</h2>
+  <div class="list-btn-container btn-container">
+    <button
+      *ngIf="title === 'Question Management'"
+      mat-raised-button
+      color="primary"
+      routerLink="/list">
+      Lists
+    </button>
+  </div>
+</header>
