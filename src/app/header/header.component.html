@@ -1,5 +1,5 @@
 <header>
-  <div class="btn">
+  <div class="back-btn-container btn-container">
     <button
       *ngIf="title !== 'Question Management'"
       mat-mini-fab
@@ -10,7 +10,7 @@
     </button>
   </div>
   <h2 class="title">{{ title }}</h2>
-  <div class="btn">
+  <div class="list-btn-container btn-container">
     <button
       *ngIf="title === 'Question Management'"
       mat-raised-button

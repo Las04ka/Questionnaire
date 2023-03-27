@@ -8,17 +8,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 
 import { QuestionListComponent } from './question-list.component';
-import { OpenQuestionComponent } from './components/open-question/open-question.component';
-import { SingleQuestionComponent } from './components/single-question/single-question.component';
-import { MultiQuestionComponent } from './components/multi-question/multi-question.component';
+import { QuestionFormComponent } from './components/question-form/question-form.component';
 
 @NgModule({
-  declarations: [
-    QuestionListComponent,
-    OpenQuestionComponent,
-    SingleQuestionComponent,
-    MultiQuestionComponent,
-  ],
+  declarations: [QuestionListComponent, QuestionFormComponent],
   imports: [
     CommonModule,
     MatCardModule,

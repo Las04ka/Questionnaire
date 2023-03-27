@@ -17,12 +17,12 @@
     <mat-card-actions>
       <button
         mat-button
-        routerLink="edit/{{ i }}">
+        routerLink="edit/{{ question.created }}">
         Edit
       </button>
       <button
         mat-button
-        (click)="onDelete(i)">
+        (click)="onDelete(question.created)">
         Delete
       </button>
     </mat-card-actions>

@@ -1,19 +1,20 @@
 import { createAction, props } from '@ngrx/store';
-import { QuestionI } from '../../shared/models/question';
+
+import { IQuestion } from '../../shared/models/question';
 
 export const addQuestion = createAction(
   '[Question] Add Question',
-  props<{ question: QuestionI }>(),
+  props<{ question: IQuestion }>(),
 );
 export const deleteQuestion = createAction(
   '[Question] Delete Question',
-  props<{ id: number }>(),
+  props<{ created: number }>(),
 );
 export const answerQuestion = createAction(
   '[Question] Answer Question',
-  props<{ id: number; answer: string }>(),
+  props<{ created: number; answer: string }>(),
 );
 export const deleteAnswer = createAction(
   '[Question] Delete Answer',
-  props<{ id: number }>(),
+  props<{ created: number }>(),
 );

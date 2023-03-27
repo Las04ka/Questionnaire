@@ -16,9 +16,9 @@ import {
 } from '../../../reducers/questions/questions.actions';
 import { AppState } from '../../../reducers';
 import { AutoUnsubscribe } from '../../../shared/decorators/unsubscriber';
-import { QuestionI } from '../../../shared/models/question';
+import { IQuestion } from '../../../shared/models/question';
 import { questionsSelector } from '../../../reducers/questions/questions.reducer';
-import { types } from '../../../shared/constants';
+import { QuestionType } from '../../../shared/constants';
 
 @Component({
   selector: 'app-question-constructor',
@@ -27,29 +27,22 @@ import { types } from '../../../shared/constants';
 })
 @AutoUnsubscribe
 export class QuestionConstructorComponent implements OnInit {
-  types = types;
-  question!: QuestionI;
-  form: FormGroup;
-  id: number;
+  types = Object.values(QuestionType);
+  question!: IQuestion;
+  form!: FormGroup;
+  created!: number;
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
     private router: Router,
     private activeRoute: ActivatedRoute,
   ) {
-    this.id = activeRoute.snapshot.params['id'];
+    this.created = this.activeRoute.snapshot.params['id'];
     this.form = this.fb.group({
       title: ['', Validators.required],
       type: ['', Validators.required],
       options: this.fb.array([]),
     });
-
-    if (this.id) {
-      this.store
-        .select(questionsSelector)
-        .pipe(first())
-        .subscribe((questions) => this.form.patchValue(questions[this.id]));
-    }
   }
 
   ngOnInit(): void {
@@ -70,16 +63,28 @@ export class QuestionConstructorComponent implements OnInit {
         this.form.get('options')?.updateValueAndValidity();
       }
     });
+
+    if (this.created) {
+      this.store
+        .select(questionsSelector)
+        .pipe(first())
+        .subscribe((questions) => {
+          questions.map((question) => {
+            if (question.created == this.created) {
+              this.form.patchValue(question);
+            }
+          });
+        });
+    }
   }
 
   onSubmit(): void {
-    if (this.id) {
-      this.store.dispatch(deleteQuestion({ id: +this.id }));
+    if (this.created) {
+      this.store.dispatch(deleteQuestion({ created: +this.created }));
     }
     this.question = {
       ...this.form.value,
       answer: null,
-      created: Date.now(),
     };
     this.store.dispatch(addQuestion({ question: this.question }));
     this.router.navigateByUrl('management');
@@ -89,7 +94,6 @@ export class QuestionConstructorComponent implements OnInit {
   }
   onAddOption(): void {
     this.options.push(new FormControl('', Validators.required));
-    console.log(this.form.value);
   }
 
   get options(): FormArray {

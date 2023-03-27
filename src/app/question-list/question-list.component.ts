@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { questionsSelector } from '../reducers/questions/questions.reducer';
 import { AppState } from '../reducers';
 import { deleteAnswer } from '../reducers/questions/questions.actions';
+import { IQuestion } from '../shared/models/question';
 
 @Component({
   selector: 'app-question-list',
@@ -14,8 +15,10 @@ export class QuestionListComponent {
   questions$ = this.store.select(questionsSelector);
   constructor(private store: Store<AppState>) {}
 
-  onRevert(i: number): void {
-    console.log(i);
-    this.store.dispatch(deleteAnswer({ id: i }));
+  onRevert(created: number): void {
+    this.store.dispatch(deleteAnswer({ created: created }));
+  }
+  trackByFn(index: number, question: IQuestion): number {
+    return question.created;
   }
 }

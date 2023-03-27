@@ -9,18 +9,22 @@ const routes: Routes = [
   {
     path: 'management',
     component: QuestionManagementComponent,
+    data: { title: 'Question Management' },
   },
   {
     path: 'management/add',
     component: QuestionConstructorComponent,
+    data: { title: 'Add Question' },
   },
   {
     path: 'management/edit/:id',
     component: QuestionConstructorComponent,
+    data: { title: 'Edit Question' },
   },
   {
     path: 'list',
     component: QuestionListComponent,
+    data: { title: 'Question List' },
   },
   {
     path: '**',

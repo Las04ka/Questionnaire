@@ -26,14 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-    StoreModule.forRoot(
-      {
-        questions: QuestionsReducer,
-      },
-      {
-        metaReducers,
-      },
-    ),
+    StoreModule.forRoot({ questions: QuestionsReducer }, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatIconModule,
     MatButtonModule,

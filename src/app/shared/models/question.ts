@@ -1,7 +1,7 @@
-export interface QuestionI {
+export interface IQuestion {
   title: string;
   type: string;
-  options: [string];
+  options: string[];
   answer: string | null;
-  created: Date;
+  created: number;
 }
